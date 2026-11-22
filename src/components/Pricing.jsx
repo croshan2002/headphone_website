@@ -1,21 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
-
-const PLANS = [
-  {
-    id: 'one',
-    name: 'Aero One',
-    price: '₹29,990',
-    perks: ['Adaptive ANC + spatial audio', '60 h battery', 'Soft travel pouch', '1-year warranty'],
-  },
-  {
-    id: 'studio',
-    name: 'Aero One Studio',
-    price: '₹36,990',
-    featured: true,
-    perks: ['Everything in Aero One', 'Hard-shell case + 3.5 mm cable', 'Spare cushion set', '2-year warranty'],
-  },
-]
+import { PLANS, formatPrice } from '../lib/content'
 
 export default function Pricing({ colorway, onAdd }) {
   const [added, setAdded] = useState(null)
@@ -46,7 +31,7 @@ export default function Pricing({ colorway, onAdd }) {
             >
               {p.featured && <span className="plan__tag">Most picked</span>}
               <h3>{p.name}</h3>
-              <p className="plan__price">{p.price}</p>
+              <p className="plan__price">{formatPrice(p.price)}</p>
               <ul>
                 {p.perks.map((perk) => (
                   <li key={perk}>{perk}</li>

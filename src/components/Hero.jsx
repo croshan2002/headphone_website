@@ -1,5 +1,6 @@
 import { motion } from 'motion/react'
 import { scrollToId } from '../lib/smooth'
+import { PLANS, formatPrice } from '../lib/content'
 
 const ease = [0.22, 1, 0.36, 1]
 const LINES = [['Silence,'], ['sculpted.']]
@@ -18,6 +19,8 @@ export default function Hero() {
         </motion.p>
 
         <h1 className="display">
+          {/* Product name in the H1 for search; the visible slogan stays as designed. */}
+          <span className="sr-only">HALO Aero One wireless noise cancelling headphones: </span>
           {LINES.map((words, i) => (
             <span className="line" key={i}>
               <motion.span
@@ -54,7 +57,7 @@ export default function Hero() {
             whileTap={{ scale: 0.97 }}
             onClick={() => scrollToId('buy')}
           >
-            Pre-order · ₹29,990
+            Pre-order · {formatPrice(PLANS[0].price)}
           </motion.button>
           <button className="btn btn--ghost" onClick={() => scrollToId('inside')}>
             Look inside →

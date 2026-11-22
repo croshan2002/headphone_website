@@ -7,6 +7,7 @@ const LINKS = [
   ['features', 'Features'],
   ['colors', 'Colours'],
   ['specs', 'Specs'],
+  ['faq', 'FAQ'],
 ]
 
 export default function Nav({ cart }) {
@@ -31,9 +32,17 @@ export default function Nav({ cart }) {
       </button>
       <nav className="nav__links">
         {LINKS.map(([id, label]) => (
-          <button key={id} onClick={() => scrollToId(id)}>
+          // Real links so crawlers can follow them; smooth scroll still handles the click.
+          <a
+            key={id}
+            href={`#${id}`}
+            onClick={(e) => {
+              e.preventDefault()
+              scrollToId(id)
+            }}
+          >
             {label}
-          </button>
+          </a>
         ))}
       </nav>
       <button className="btn btn--small" onClick={() => scrollToId('buy')}>

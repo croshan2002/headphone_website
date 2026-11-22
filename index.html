@@ -4,12 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0b0c10" />
-    <title>HALO Aero One — Wireless Headphones</title>
-    <meta name="description" content="HALO Aero One. Adaptive noise cancelling wireless headphones with 60-hour battery." />
+    <!-- Title, description, social tags and JSON-LD are injected by vite-plugin-seo.js from src/lib/content.js -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='none' stroke='%237c5cff' stroke-width='14'/></svg>" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+    <style>
+      body { background: #0b0c10; }
+      /* Plain-HTML copy of the content for crawlers that don't run JS; React replaces it on mount. */
+      .prerender { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+    </style>
   </head>
   <body>
     <div id="root"></div>

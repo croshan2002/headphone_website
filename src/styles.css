@@ -28,6 +28,8 @@ body {
 
 button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
 ul, ol { list-style: none; }
+a { color: inherit; text-decoration: none; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 
 ::selection { background: var(--accent); color: #fff; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
@@ -98,8 +100,8 @@ main, .footer, .nav { position: relative; z-index: 1; }
 .logo { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.1rem; letter-spacing: 0.1em; }
 .logo__ring { width: 18px; height: 18px; border-radius: 50%; border: 3px solid var(--accent); transition: border-color 0.6s; }
 .nav__links { display: flex; gap: 6px; }
-.nav__links button { padding: 8px 14px; border-radius: 999px; color: var(--muted); font-size: 0.9rem; transition: color 0.2s, background-color 0.2s; }
-.nav__links button:hover { color: var(--text); background: var(--card); }
+.nav__links a { padding: 8px 14px; border-radius: 999px; color: var(--muted); font-size: 0.9rem; transition: color 0.2s, background-color 0.2s; }
+.nav__links a:hover { color: var(--text); background: var(--card); }
 
 /* ---------- Sections ---------- */
 .section { min-height: 100vh; min-height: 100svh; padding: 120px var(--pad); display: flex; align-items: center; }
@@ -205,6 +207,26 @@ main, .footer, .nav { position: relative; z-index: 1; }
 }
 .toast__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
 
+/* FAQ */
+.faq { align-items: flex-start; }
+.faq__inner { width: 100%; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 48px; align-items: start; }
+.faq__list { display: grid; gap: 10px; }
+.faq__item {
+  border-radius: 18px; background: var(--card); box-shadow: inset 0 0 0 1px var(--line);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); transition: box-shadow 0.3s var(--ease);
+}
+.faq__item[open] { box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 45%, transparent); }
+.faq__item summary { list-style: none; cursor: pointer; position: relative; padding: 20px 56px 20px 22px; }
+.faq__item summary::-webkit-details-marker { display: none; }
+.faq__item summary h3 { font-size: 1rem; font-weight: 500; }
+.faq__item summary::after {
+  content: ''; position: absolute; right: 24px; top: 50%; width: 9px; height: 9px;
+  border-right: 2px solid var(--accent); border-bottom: 2px solid var(--accent);
+  transform: translateY(-70%) rotate(45deg); transition: transform 0.3s var(--ease);
+}
+.faq__item[open] summary::after { transform: translateY(-30%) rotate(-135deg); }
+.faq__item p { padding: 0 22px 20px; color: var(--muted); font-size: 0.95rem; max-width: 60ch; }
+
 /* Footer */
 .footer { padding: 60px var(--pad) 32px; border-top: 1px solid var(--line); overflow: hidden; }
 .footer__big {
@@ -223,13 +245,15 @@ main, .footer, .nav { position: relative; z-index: 1; }
   .stats { grid-template-columns: repeat(2, 1fr); }
   .specs { padding-top: 50vh; }
   .plans { grid-template-columns: 1fr; }
+  .faq { align-items: flex-start; padding-top: 96px; }
+  .faq__inner { grid-template-columns: 1fr; gap: 28px; }
   .parts { width: 100%; }
   .parts .part:not(.part--active) { display: none; }
   .scroll-hint { display: none; }
 }
 
 @media (hover: none) {
-  .nav__links button:hover, .btn--ghost:hover { background: none; }
+  .nav__links a:hover, .btn--ghost:hover { background: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {

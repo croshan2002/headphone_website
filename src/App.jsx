@@ -8,6 +8,7 @@ import Features from './components/Features'
 import Colors from './components/Colors'
 import Specs from './components/Specs'
 import Pricing from './components/Pricing'
+import Faq from './components/Faq'
 import Footer from './components/Footer'
 import { COLORWAYS, scene } from './lib/store'
 import { initSmoothScroll, ScrollTrigger } from './lib/smooth'
@@ -64,6 +65,7 @@ export default function App() {
         <Colors colorway={colorway} onChange={setColorway} />
         <Specs />
         <Pricing colorway={colorway} onAdd={() => setCart((c) => c + 1)} />
+        <Faq />
       </main>
       <Footer />
     </>
